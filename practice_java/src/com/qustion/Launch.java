@@ -35,8 +35,6 @@ class Student{
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + "]";
 	}
-	
-	
 }
 public class Launch {
 public static void main(String[] args) {
@@ -46,12 +44,11 @@ public static void main(String[] args) {
 	
 	List<Student>  copylist = new ArrayList<Student>(originalList);//shallow copy creation
 	
-	List<Student>  deepCopy = new ArrayList<Student>();
+	List<Student>  deepCopy = new ArrayList<Student>();//deep copy creation
 	
 	for (Student student : originalList) {//deep copy creation
 		deepCopy.add(new Student(student.getId(), student.getName()));
 	}
-	
 	//changing the original object
 	originalList.get(0).setName("kohli");
 	originalList.get(0).setId(18);
@@ -59,13 +56,9 @@ public static void main(String[] args) {
 	System.out.println(originalList.hashCode());//-1880323442 => same address
 	System.out.println(copylist.hashCode());//-1880323442     => same address
 	System.out.println(deepCopy.hashCode());//-1292852930     => different address
-	
-	System.out.println(originalList);
-	System.out.println(copylist);
-	System.out.println(deepCopy);
-	
-	
-	
+	System.out.println(originalList);//[Student [id=18, name=kohli], Student [id=7, name=dhoni]]
+	System.out.println(copylist);//[Student [id=18, name=kohli], Student [id=7, name=dhoni]]
+	System.out.println(deepCopy);//[Student [id=10, name=sachin], Student [id=7, name=dhoni]]
 }
 }
 
